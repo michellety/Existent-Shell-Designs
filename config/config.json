@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Primary22",
-    "database": "exampledb",
+    "database": "galleryDb",
     "host": "localhost",
     "dialect": "mysql"
   },
