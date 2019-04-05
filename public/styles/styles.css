@@ -114,6 +114,7 @@ body {
   margin: 0;
   font-family: Arial;
   background-color: rgba(55, 112, 219, 0.849);
+  display: grid;
 }
 
 .header {
