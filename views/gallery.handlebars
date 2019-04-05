@@ -1,0 +1,39 @@
+<div class="header">
+    <h1>Gallery Page</h1>
+</div>
+
+<div class="container">
+    <div class="gallery">
+        {{#each items}}
+        <div class="row">
+            <div class="column">
+                <div class="card" style="width: 18rem;">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <img class="card-img-top" src="images/{{this.imgSource}}" alt="{{this.title}}">
+                    <div class="card-body">
+                        <p class="card-text">{{this.descript}}</p>
+                        <a href="#" class="btn btn-primary">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+
+
+    <div class="aside">
+        <div class="cart">
+            <h3>Cart</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Item in the cart</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer"></div>
+
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/grid.js"></script>
