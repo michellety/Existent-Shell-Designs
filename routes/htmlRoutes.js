@@ -14,21 +14,28 @@ module.exports = function(app) {
   app.get("/gallery", function(req, res) {
 //getting data from the creations table, stored in dbCreations/ can be named anything 
     db.Creations.findAll({}).then(function(dbCreations) {
-      console.log(dbCreations);
+      // console.log(dbCreations);
       res.render("gallery", {
         items: dbCreations
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  // app.get("/example/:id", function(req, res) {
-  //   db.Creations.findOne({ where: { id: req.params.id } }).then(function(dbCreations) {
-  //     res.render("example", {
-  //       example: dbCreations
-  //     });
-  //   });
-  // });
+
+  // Load checkout page
+  //post r to gallery here 
+
+
+
+  app.post("/checkout", function(req, res) {
+    //getting data from the creations table, stored in dbCreations/ can be named anything 
+    var checkout = req.body;
+    console.log("data", checkout)
+          res.render("checkout", {
+            purchases: checkout
+          });
+        
+      });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

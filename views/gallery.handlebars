@@ -1,39 +1,35 @@
-<div class="header">
-    <h1>Gallery Page</h1>
-</div>
-
 <div class="container">
-    <div class="gallery">
+    <header>
+        <h1>Existent-Shell Designs</h1>
+        <p>Unique art pieces</p>
+    </header>
+
+    <main class="grid">
+        
         {{#each items}}
-        <div class="row">
-            <div class="column">
-                <div class="card" style="width: 18rem;">
-                    <h5 class="card-title">{{this.title}}</h5>
-                    <img class="card-img-top" src="images/{{this.imgSource}}" alt="{{this.title}}">
-                    <div class="card-body">
-                        <p class="card-text">{{this.descript}}</p>
-                        <a href="#" class="btn btn-primary">Purchase</a>
-                    </div>
-                </div>
+        <div class="gallery-item" id="portfolio">
+            <img class="img" src="images/{{this.imgSource}}" alt="{{this.title}}" style="width:100%">
+            <div class="piece-desc">
+                <div id="title" class="ch">{{this.title}}</div>
+                <p class="text">{{this.descript}}</p>
+                <p id="price" class="text">Price: ${{this.price}}.00</p>
+                <a href="#" class="purchase btn btn-primary" data-id={{this.id}} data-price={{this.price}}
+                    data-title={{this.title}}>Purchase</a>
             </div>
         </div>
         {{/each}}
-    </div>
+       
+    </main>
 
 
+    {{!-- <form method="POST" action="/checkout"> --}}
+    <ul id="cart-list" class="list-group">
+    </ul>
+    <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
 
-    <div class="aside">
-        <div class="cart">
-            <h3>Cart</h3>
-            <ul class="list-group">
-                <li class="list-group-item">Item in the cart</li>
-            </ul>
-        </div>
-    </div>
+    {{!-- </form> --}}
+
+
+    <div class="footer">Made by M</div>
 
 </div>
-
-<div class="footer"></div>
-
-<script src="/js/index.js"></script>
-<script type="text/javascript" src="/js/grid.js"></script>

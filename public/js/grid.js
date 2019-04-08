@@ -1,88 +1,53 @@
-const body = document.querySelector("body");
-const images = document.querySelectorAll(".gg-box img");
-const l = images.length;
-for(var i = 0; i < l; i++) {
-    images[i].addEventListener("click", function(i) {
-        const boxContainer = document.querySelector("#gg-screen");
-        var route = this.src;
-        var currentImg = this;
-        const first = images[0].src;
-        const last = images[l-1].src;
-        boxContainer.hidden = false;
-        body.style.overflow = 'hidden';
-        boxContainer.innerHTML='<div class="gg-image"></div><div class="gg-close gg-bt">&times</div><div class="gg-next gg-bt">&rarr;</div><div class="gg-prev gg-bt">&larr;</div>';
-        const boxImg = document.querySelector(".gg-image");
-        const prevBtn = document.querySelector(".gg-prev");
-        const nextBtn = document.querySelector(".gg-next");
-        const close = document.querySelector(".gg-close");
-        if (l > 1) {
-            if (route == first){
-                prevBtn.hidden = true;
-                var prevImg = false;
-                var nextImg = currentImg.nextElementSibling;
-            }
-            else if (route == last){
-                nextBtn.hidden = true;
-                var nextImg = false;
-                var prevImg = currentImg.previousElementSibling;
-            }
-            else{
-                var prevImg = currentImg.previousElementSibling;
-                var nextImg = currentImg.nextElementSibling;
-            }
-        }
-        else{
-            prevBtn.hidden = true;
-            nextBtn.hidden = true;
-        }
-        boxImg.innerHTML = '<img src="' + route + '">';
-        boxContainer.addEventListener("click", function(e){
-            if (e.target == this || e.target == close){
-              boxContainer.hidden = true;
-              body.style.overflow = 'auto';
-            }
-        });
-        prevBtn.addEventListener("click", function(){
-            prev();
-        });
-        nextBtn.addEventListener("click", function(){
-            next();
-        });
-        body.addEventListener("keydown", function(e){
-            if (e.keyCode == 37 || e.keyCode == 38) {
-                prev();
-            }
-        });
-        body.addEventListener("keydown", function(e){
-            if (e.keyCode == 39 || e.keyCode == 40) {
-                next();
-            }
-        });
-        function prev(){
-            prevImg = currentImg.previousElementSibling;
-            boxImg.innerHTML = '<img src="' + prevImg.src + '">';
-            currentImg = currentImg.previousElementSibling;
-            var mainImg = document.querySelector(".gg-image > img").src;
-            if (mainImg == first){
-                prevBtn.hidden = true;
-            }
-            else{
-                prevBtn.hidden = false;
-                nextBtn.hidden = false;
-            }
+$(document).ready(function () {
+    console.log("document loaded");
+    // for (var i =0; i < checkoutArr.length; i++) {
+
+    // }
+
+    /// add up items in array, render total and call render cart function 
+
+    //when the button is clicked, info saved, new object with name and price, to be displayed in the cart
+    //clicks to other purchase buttons will push more data into the cart 
+
+    var checkoutArr = [];
+    renderCart(checkoutArr);
+    $(".purchase").click(function () {
+        var productId = $(this).attr("data-id");
+        //make a new cart object
+        var newCart = {
+            id: productId,
+            price: $(this).attr("data-price"),
+            title: $(this).attr("data-title")
         };
-        function next(){
-            nextImg = currentImg.nextElementSibling;
-            boxImg.innerHTML ='<img src="' + nextImg.src + '">';
-            currentImg = currentImg.nextElementSibling;
-            var mainImg = document.querySelector(".gg-image > img").src;
-            if (mainImg == last){
-                nextBtn.hidden = true;
-            }
-            else{
-                nextBtn.hidden = false;
-                prevBtn.hidden = false;
-            }
-        };
-  });
-}
+
+        console.log("this", $(this));
+        checkoutArr.push(newCart);
+        console.log(newCart);
+        renderCart(checkoutArr)
+
+    });
+
+    function renderCart(data) {
+        $("#cart-list").html('');
+
+        data.forEach((item) => {
+            var list = $("<li>");
+            list.addClass("cart-item");
+            list.html(`<input name=title-${item.id} class="btn btn-warning" type="hidden" value=${item.title}>
+                        <input name=price-${item.id} class="btn btn-warning" type="hidden" value=${item.price}>
+                        Product:  ${item.title} Price: ${item.price}`);
+            $("#cart-list").prepend(list);
+        })
+    }
+
+
+
+    // $("#checkoutBtn").click(function() {
+    //     $.post("/checkout", {data: checkoutArr}, function(data) {
+    //         $(document).html(data)
+    //     })
+    // })
+
+});
+
+
