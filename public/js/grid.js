@@ -1,5 +1,6 @@
 $(document).ready(function () {
     console.log("document loaded");
+    
     // for (var i =0; i < checkoutArr.length; i++) {
 
     // }
@@ -17,9 +18,10 @@ $(document).ready(function () {
         var newCart = {
             id: productId,
             price: $(this).attr("data-price"),
-            title: $(this).attr("data-title")
+            title: $(this).attr("data-title"),
+            descript: $(this).attr("data-descript")
         };
-
+        
         console.log("this", $(this));
         checkoutArr.push(newCart);
         console.log(newCart);
@@ -33,10 +35,11 @@ $(document).ready(function () {
         data.forEach((item) => {
             var list = $("<li>");
             list.addClass("cart-item");
-            list.html(`<input name=title-${item.id} class="btn btn-warning" type="hidden" value=${item.title}>
-                        <input name=price-${item.id} class="btn btn-warning" type="hidden" value=${item.price}>
-                        Product:  ${item.title} Price: ${item.price}`);
+            list.html(`<input name=title-${item.descript}  type="hidden" value=${item.descript}>
+                        <input name=price-${item.id}  type="hidden" value=${item.price}>
+                        Product:  ${item.descript} | Price: $ ${item.price}`);
             $("#cart-list").prepend(list);
+    
         })
     }
 
