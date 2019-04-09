@@ -3,6 +3,35 @@ body {
   background-image: url("/images/allshells.jpg");
 }
 
+.home {
+  text-align: center;
+  border: 2px solid rgba(255, 160, 122, 0.692);
+}
+.home-body {
+  background-color: rgba(130, 183, 253, 0.795);
+  border: 2px solid rgba(255, 160, 122, 0.692);
+  border-top: none;
+  padding: 2em;
+}
+.headline {
+  color:lightsalmon;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 55px;
+}
+
+.intro, h1 {
+  color:lightsalmon;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 35px;
+}
+.home-title {
+  background-image: url("/images/hermit.jpg");
+  background-size: contain;
+  border: 2px solid rgba(255, 160, 122, 0.692);
+  min-height: 300px;
+}
 .grid {
   display: grid;
   grid: auto / repeat(auto-fit, minmax(15em, 1fr));

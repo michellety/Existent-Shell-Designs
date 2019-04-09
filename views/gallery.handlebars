@@ -2,8 +2,7 @@
     <header>
         <div class="header">
             <p>Existent-Shell Designs</p>
-            <p>Unique art pieces</p>
-            
+            <p>Unique art pieces</p>    
         </div>
     </header>
 
@@ -11,7 +10,7 @@
         
         {{#each items}}
         <div class="gallery-item" id="portfolio">
-            <img class="img" src="images/{{this.imgSource}}" alt="{{this.title}}" style="width:100%">
+            <a href="images/{{this.imgSource}}" data-lightbox="Custom Designs" data-title="{{this.descript}}"><img class="img" src="images/{{this.imgSource}}" alt="{{this.title}}" style="width:100%"></a>
             <div class="piece-desc">
                 <div id="title" class="ch">{{this.title}}</div>                
                 <hr>               
