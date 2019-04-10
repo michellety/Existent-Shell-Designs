@@ -31,13 +31,14 @@ $(document).ready(function () {
 
     function renderCart(data) {
         $("#cart-list").html('');
-
+        
         data.forEach((item) => {
             var list = $("<li>");
+            var total = 0;
             list.addClass("cart-item");
             list.html(`<input name=title-${item.descript}  type="hidden" value=${item.descript}>
                         <input name=price-${item.id}  type="hidden" value=${item.price}>
-                        Product:  ${item.descript} | Price: $ ${item.price}`);
+                        Product:  ${item.descript}   |   Price: $ ${item.price}`);
             $("#cart-list").prepend(list);
     
         })
