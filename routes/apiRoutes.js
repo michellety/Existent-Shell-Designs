@@ -9,6 +9,17 @@ module.exports = function(app) {
   });
 
 
+  app.post("/api/cart", function(req, res) {
+      var body = req.body;
+      var item = {
+        creationId: body.id,
+        item: body.title,
+        price: body.price
+      }
+      db.CartItems.create(item).then(function(data) {
+        res.json(data);
+      })
+  })
 
 
   // Create a new example

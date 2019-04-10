@@ -55,8 +55,9 @@
                     <hr>
                     <p class="text">{{this.descript}}</p>
                     <p id="price" class="text">Price: ${{this.price}}.00</p>
-                    <a href="#" class="purchase btn" data-id={{this.id}} data-price={{this.price}}
-                        data-title={{this.title}} data-descript={{this.descript}}>Purchase</a>
+                    <button class="purchase btn" data-id={{this.id}} data-price={{this.price}}
+                        data-title={{this.title}} data-descript={{this.descript}}>Purchase
+                    </button>
                 </div>
             </div>
             {{/each}}
@@ -72,10 +73,11 @@
             <div class="cartItem">
                 <ul id="cart-list" class="list-group"></ul>
                 <hr>
-                <div class="total">Total: $ </div>
+                <div class="total">Total: $<span id="cart-total"></span> </div>
             </div>
             
-            <button id="checkoutBtn" class="btn">Checkout</button>
+            <button  class="btn" href="/checkout">Checkout</button>
+            {{!-- <a id="checkoutBtn" class="btn btn-primary" href="/checkout" role="button">Checkout</a> --}}
         </div>
     </div>
     </form>

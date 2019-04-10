@@ -1,10 +1,15 @@
-<div class="container">
+<div class="container jumbotron">
     <h1>Procede with Stripe to complete the transaction</h1>
 
     <div>
-        {{!-- {{#each purchases}}
-        
-        {{/each}} --}}
+        {{#each shoppingBag}}
+        <div class="bag">
+            <ul>
+                <li>{{this.item}} {{this.price}}</li>
+            </ul>
+        </div>
+        {{/each}}
+        <div class="total">Total: $<span id="cart-total"></span> </div>
 
     </div>
 </div>

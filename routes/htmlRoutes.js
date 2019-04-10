@@ -23,27 +23,14 @@ module.exports = function(app) {
 
 
   // Load checkout page
-  //post r to gallery here 
+    app.get("/checkout", function(req, res) {
+      db.CartItems.findAll({}).then(function(bag) {
+        res.render("checkout", {
+        shoppingBag : bag
+        });
+      });
+    }); 
 
-  //could make a post request attached to a payment button 
-
-  // app.post("/checkout", function(req, res) {
-  //   //getting data from the creations table, stored in dbCreations/ can be named anything 
-  //   var checkout = req.body;
-  //   console.log("data", checkout)
-  //   var dataArray = []
-  //   Object.keys(checkout).forEach((item) => {
-  //     if(item[])
-  //     dataArray.push({
-  //       title: checkout[item],
-  //       price: checkout[item]
-  //     })
-  //   })
-  //         res.render("checkout", {
-  //           purchases: checkout
-  //         });
-        
-  //     });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
