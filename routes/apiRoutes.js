@@ -13,7 +13,8 @@ module.exports = function(app) {
       var body = req.body;
       var item = {
         creationId: body.id,
-        item: body.title,
+        item: body.nickname,
+        // item: body.title,
         price: body.price
       }
       db.CartItems.create(item).then(function(data) {

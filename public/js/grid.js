@@ -12,7 +12,8 @@ $(document).ready(function () {
             id: productId,
             price: $(this).attr("data-price"),
             title: $(this).attr("data-title"),
-            descript: $(this).attr("data-descript")
+            descript: $(this).attr("data-descript"),
+            nickname: $(this).attr("data-nickname")
         };
         
         $.post("/api/cart", newCart, function(data) {
