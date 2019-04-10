@@ -62,7 +62,7 @@ img {
 
 header {
   min-height: 450px;
-  background-image: url("/images/scallopcrop.jpg");
+  background-image: url("/images/scallopCrop.jpg");
   background-size: cover;
   display: flex;
   padding: 2em;
