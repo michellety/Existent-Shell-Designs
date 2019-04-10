@@ -2,44 +2,84 @@
     <header>
         <div class="header">
             <p>Existent-Shell Designs</p>
-            <p>Unique art pieces</p>    
+            <p>Unique art pieces</p>
         </div>
     </header>
 
-    <main class="grid">
-        
-        {{#each items}}
-        <div class="gallery-item" id="portfolio">
-            <a href="images/{{this.imgSource}}" data-lightbox="Custom Designs" data-title="{{this.descript}}"><img class="img" src="images/{{this.imgSource}}" alt="{{this.title}}" style="width:100%"></a>
-            <div class="piece-desc">
-                <div id="title" class="ch">{{this.title}}</div>                
-                <hr>               
-                <p class="text">{{this.descript}}</p>
-                <p id="price" class="text">Price: ${{this.price}}.00</p>
-                <a href="#" class="purchase btn" data-id={{this.id}} data-price={{this.price}}
-                    data-title={{this.title}} data-descript={{this.descript}}>Purchase</a>
+    <div id="cForm" class="contactForm">
+        <form>
+            <div class="form-group form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name"
+                        value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Last name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name"
+                        value="Otto" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
             </div>
-        </div>
-        {{/each}}
-       
-    
-    </main>
 
-    {{!-- <form method="POST" action="/checkout"> --}}
-    {{!-- <div>
-  <form action="/" method="POST">
-  	<textarea type="text" name="wish"></textarea>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
 
-  	<button type="submit">Submit</button>
-  </form>
-</div> --}}
- 
-    <div class="shoppingCart">
-        <ul id="cart-list" class="list-group"></ul>
-        <button id="checkoutBtn" class="btn">Checkout</button>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            </div>
+            <button id="send" class="btn">Submit</button>
+        </form>
     </div>
 
-    {{!-- </form> --}}
+    <main>
+        <div class="contact">
+            <button id="contactInfo" class="btn">Contact Information</button>
+        </div>
+
+        <div class="grid">
+            {{#each items}}
+            <div class="gallery-item" id="portfolio">
+                <a href="images/{{this.imgSource}}" data-lightbox="Custom Designs" data-title="{{this.descript}}"><img
+                        class="img" src="images/{{this.imgSource}}" alt="{{this.title}}" style="width:100%"></a>
+                <div class="piece-desc">
+                    <div id="title" class="ch">{{this.title}}</div>
+                    <hr>
+                    <p class="text">{{this.descript}}</p>
+                    <p id="price" class="text">Price: ${{this.price}}.00</p>
+                    <a href="#" class="purchase btn" data-id={{this.id}} data-price={{this.price}}
+                        data-title={{this.title}} data-descript={{this.descript}}>Purchase</a>
+                </div>
+            </div>
+            {{/each}}
+
+
+    </main>
+
+    <div id="check" class="checkout">
+        <div class="shoppingCart">
+            <div class="cartTitle">
+                <h3>Shopping Bag</h3>
+            </div>
+            <div class="cartItem">
+                <ul id="cart-list" class="list-group"></ul>
+                <div class="total">Total: $ </div>
+            </div>
+            
+            <button id="checkoutBtn" class="btn">Checkout</button>
+        </div>
+    </div>
+    </form>
+    </main>
+   
 
 
     <div class="footer">Made by M</div>
