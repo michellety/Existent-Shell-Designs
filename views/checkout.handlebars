@@ -1,5 +1,5 @@
 <div class="container jumbotron">
-    <h1>Procede with Stripe to complete the transaction</h1>
+    <h1>Complete the transaction with Stripe</h1>
 
     <div>
         {{#each shoppingBag}}
@@ -12,4 +12,22 @@
         <div class="total">Total: $<span id="cart-total"></span> </div>
 
     </div>
+
+
+
+<form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{stripePublishableKey}}"
+    data-amount="999"
+    data-name="Existent-Shell Designs"
+    data-description="Custom art"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-zip-code="true"
+    data-shipping-address="true"
+    data-locale="auto">
+  </script>
+</form>
+
+
 </div>

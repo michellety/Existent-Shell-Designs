@@ -1,105 +1,107 @@
+// Get references to page elements
+var $contactFirst = $("#contact-first");
+var $contactLast = $("#contact-last");
+var $contactEmail = $("#contact-email");
+var $contactMessage = $("#contact-message");
+var $cButton = $("#send");
 
-
-
-
-
-
-// // Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
 
 // // The API object contains methods for each kind of request we'll make
-// var API = {
-//   saveExample: function(example) {
-//     return $.ajax({
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       type: "POST",
-//       url: "api/examples",
-//       data: JSON.stringify(example)
-//     });
-//   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
-//   deleteExample: function(id) {
-//     return $.ajax({
-//       url: "api/examples/" + id,
-//       type: "DELETE"
-//     });
-//   }
-// };
+var API = {
+  saveContact: function(contact) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/contacts",
+      data: JSON.stringify(contact)
+    });
+  },
+  getContact: function() {
+    return $.ajax({
+      url: "api/contacts",
+      type: "GET"
+    });
+  },
+  deleteContact: function(id) {
+    return $.ajax({
+      url: "api/contacts/" + id,
+      type: "DELETE"
+    });
+  }
+};
 
-// // refreshExamples gets new examples from the db and repopulates the list
-// var refreshExamples = function() {
-//   API.getExamples().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
+// refreshContacts gets new examples from the db and repopulates the list
+var refreshContacts = function() {
+  API.getContacts().then(function(data) {
+    var $contacts = data.map(function(contact) {
+      var $a = $("<a>")
+        .text(contact.text)
+        .attr("href", "/contact/" + contact.id);
 
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": contact.id
+        })
+        .append($a);
 
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
+    //   var $button = $("<button>")
+    //     .addClass("btn btn-danger float-right delete")
+    //     .text("ｘ");
 
-//       $li.append($button);
+    //   $li.append($button);
 
-//       return $li;
-//     });
+      return $li;
+    });
 
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
+    // $exampleList.empty();
+    // $exampleList.append($examples);
+  });
+};
 
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleFormSubmit = function(event) {
+  event.preventDefault();
 
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
+  var contact = {
+    firstName : $contactFirst.val().trim(),
+    lastName :  $contactLast.val().trim(), 
+    contactEmail : $contactEmail.val().trim(),
+    message : $contactMessage.val().trim() 
 
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
+  };
 
-//   API.saveExample(example).then(function() {
-//     refreshExamples();
-//   });
+  if (!(contact.firstName && contact.lastName && contact.contactEmail && contact.message)) {
+    alert("You must enter completely fill out the form!");
+    return;
+  }
 
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
+  API.saveContact(contact).then(function() {
+    refreshContacts();
+  });
 
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
+  //clear contact form 
+  $contactFirst.val("");
+  $contactLast.val("");
+  $contactEmail.val("");
+  $contactMessage.val("");
+};
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
 // var handleDeleteBtnClick = function() {
 //   var idToDelete = $(this)
 //     .parent()
 //     .attr("data-id");
 
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshExamples();
+//   API.deleteContact(idToDelete).then(function() {
+//     refreshContacts();
 //   });
 // };
 
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
+// Add event listeners to the submit and delete buttons
+$cButton.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);

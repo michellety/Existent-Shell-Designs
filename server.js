@@ -3,6 +3,13 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
+const keys = require("./config/keys")
+const stripe = require('stripe')(keys.stripeSecretKey);
+ 
+// const customer = await stripe.customers.create({
+//   email: 'customer@example.com'
+// });
+
 var db = require("./models");
 // Sets up the Express App
 var app = express();
@@ -11,6 +18,7 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+//static folder called public: holds images and styles
 app.use(express.static("public"));
 
 

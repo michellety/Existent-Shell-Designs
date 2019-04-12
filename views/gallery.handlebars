@@ -11,7 +11,7 @@
             <div class="form-group form-row">
                 <div class="col-md-4 mb-3">
                     <label for="validationServer01">First name</label>
-                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name"
+                    <input type="text" class="form-control is-valid" id="contact-first" placeholder="First name"
                         value="Mark" required>
                     <div class="valid-feedback">
                         Looks good!
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationServer02">Last name</label>
-                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name"
+                    <input type="text" class="form-control is-valid" id="contact-last" placeholder="Last name"
                         value="Otto" required>
                     <div class="valid-feedback">
                         Looks good!
@@ -29,12 +29,12 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="email" class="form-control" id="contact-email" placeholder="name@example.com">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                <textarea class="form-control" id="contact-message" rows="4"></textarea>
             </div>
             <button id="send" class="btn">Submit</button>
         </form>
@@ -56,7 +56,7 @@
                     <p class="text">{{this.descript}}</p>
                     <p id="price" class="text">Price: ${{this.price}}.00</p>
                     <button class="purchase btn" data-id={{this.id}} data-price={{this.price}}
-                        data-title={{this.title}} data-descript={{this.descript}}>Purchase
+                        data-title={{this.title}} data-descript={{this.descript}} data-nickname={{this.nickname}}>Purchase
                     </button>
                 </div>
             </div>
@@ -78,6 +78,7 @@
             
             {{!-- <button  class="btn" href="/checkout">Checkout</button> --}}
             <a id="checkoutBtn" class="btn btn-primary" href="/checkout" role="button">Checkout</a>
+            <button id="clear" class="btn btn-default">Clear Shopping Bag</button>
         </div>
     </div>
     </form>

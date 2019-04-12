@@ -8,6 +8,12 @@ module.exports = function(app) {
     });
   });
 
+  // TODO: finish this
+  app.get("/api/purchases", function(req, res) {
+    db.CartItems.findAll({}).then(function(cartpurchases) {
+      res.json(cartpurchases);
+    })
+  });
 
   app.post("/api/cart", function(req, res) {
       var body = req.body;
@@ -20,6 +26,40 @@ module.exports = function(app) {
       db.CartItems.create(item).then(function(data) {
         res.json(data);
       })
+  })
+
+
+  //for the contact form 
+  app.get("/api/contacts", function(req,res) {
+    db.Messages.findAll({}).then(function(message) {
+      res.json(message);
+    });
+  });
+
+  //create a new contact form message
+  app.post("/api/messages", function(req, res) {
+    var body = req.body;
+    var contactFormInfo = {
+      firstName: body.firstName,
+      lastName: body.lastName,
+      contactEmail: body.contactEmail,
+      message: body.message,
+
+    }
+    db.Messages.create(contactFormInfo).then(function(data) {
+      res.json(data);
+    })
+  })
+  
+//clearing the shopping cart 
+  app.delete("/api/shopping-cart", function(req, res) {
+    db.CartItems.destroy({
+      where: {},
+      truncate: true
+    }).then(function(data) {
+      res.json(data);
+    })
+    
   })
 
 
@@ -38,7 +78,7 @@ module.exports = function(app) {
   //   });
   // });
 
-  // Delete an example by id
+  //Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
   //   db.Creations.destroy({ where: { id: req.params.id } }).then(function(dbCreations) {
   //     res.json(dbCreations);

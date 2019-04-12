@@ -21,12 +21,12 @@ module.exports = function(app) {
     });
   });
 
-
   // Load checkout page
     app.get("/checkout", function(req, res) {
       db.CartItems.findAll({}).then(function(bag) {
         res.render("checkout", {
         shoppingBag : bag
+        // stripePublishableKey : key.stripePublishableKey
         });
       });
     }); 
