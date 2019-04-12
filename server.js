@@ -3,7 +3,8 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-const keys = require("./config/keys")
+const keys = require("./config/keys");
+
 const stripe = require('stripe')(keys.stripeSecretKey);
  
 // const customer = await stripe.customers.create({
