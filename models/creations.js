@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  //create a Creations model that matches up with the database
+  //create a Creations model that matches up with the database to catalog the products 
   var Creations = sequelize.define("Creations", {
     category: DataTypes.STRING,
     nickname: DataTypes.STRING,
