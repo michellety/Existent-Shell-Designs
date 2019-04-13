@@ -66,5 +66,28 @@ module.exports = function (app) {
     });
   });
 
+  ///////////////// stripe //////////////////
+  app.get('/stripe', (req, res) => {
+    res.render('checkout', {
+      stripePublishableKey: keys.stripePublishableKey
+    });
+  });
+  
+  // Charge Route
+  app.post('/charge', (req, res) => {
+    const amount = 9000;
+    
+    stripe.customers.create({
+      email: req.body.stripeEmail,
+      source: req.body.stripeToken
+    })
+    .then(customer => stripe.charges.create({
+      amount,
+      description: 'Existent-Shell Art',
+      currency: 'usd',
+      customer: customer.id
+    }))
+    .then(charge => res.render('success'));
+  });
 
 };

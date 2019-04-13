@@ -18,13 +18,15 @@
 
   {{!-- form that inserts stripe to process payments --}}
   <form action="/charge" method="POST">
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{stripePublishableKey}}"
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" 
+      data-key="{{stripePublishableKey}}"
       data-amount="9000" 
       data-name="Existent-Shell Designs" 
       data-description="Custom art"
       data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-zip-code="true"
       data-shipping-address="true" data-locale="auto">
     </script>
+    
   </form>
 
 
