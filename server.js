@@ -6,7 +6,16 @@ var exphbs = require("express-handlebars");
 const keys = require("./config/keys");
 
 const stripe = require("stripe")(keys.stripeSecretKey);
- 
+// const token = request.body.stripeToken; // Using Express
+
+// (async () => {
+//   const charge = await stripe.charges.create({
+//     amount: {total},
+//     currency: 'usd',
+//     description: 'Example charge',
+//     source: token,
+//   });
+// })();
 // const customer = await stripe.customers.create({
 //   email: 'customer@example.com'
 // });
