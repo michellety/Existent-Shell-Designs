@@ -1,6 +1,8 @@
 var db = require("../models");
 
 module.exports = function (app) {
+
+  //////////////////// gallery route /////////////////////////
   // Get all creations from the Creations table
   app.get("/api/creations", function (req, res) {
     db.Creations.findAll({}).then(function (dbCreations) {
@@ -8,11 +10,13 @@ module.exports = function (app) {
     });
   });
 
-  // TODO: finish this
+  ///////////////// cart item routes ///////////////////////////
+
+  // get all of the purchases in the cart table of the database
   app.get("/api/purchases", function (req, res) {
     db.CartItems.findAll({}).then(function (cartpurchases) {
       res.json(cartpurchases);
-    })
+    });
   });
 
   //creates a new item entry into the CartItems table of the database
@@ -22,11 +26,24 @@ module.exports = function (app) {
       creationId: body.id,
       item: body.nickname,
       price: body.price
-    }
+    };
     db.CartItems.create(item).then(function (data) {
       res.json(data);
-    })
-  })
+    });
+  });
+
+  //clearing the shopping cart, table CartItems in the database 
+  app.delete("/api/shopping-cart", function (req, res) {
+    db.CartItems.destroy({
+      where: {},
+      truncate: true
+    }).then(function (data) {
+      res.json(data);
+    });
+
+  });
+
+  /////////// contact form routes //////////////
 
   //for the contact form, gets all of the information saved in the Messages table 
   app.get("/api/contacts", function (req, res) {
@@ -43,22 +60,11 @@ module.exports = function (app) {
       lastName: req.body.lastName,
       contactEmail: req.body.contactEmail,
       message: req.body.message,
-
-    }
+    };
     db.Messages.create(contactFormInfo).then(function (data) {
       res.json(data);
-    })
-  })
+    });
+  });
 
-  //clearing the shopping cart, table CartItems in the database 
-  app.delete("/api/shopping-cart", function (req, res) {
-    db.CartItems.destroy({
-      where: {},
-      truncate: true
-    }).then(function (data) {
-      res.json(data);
-    })
-
-  })
 
 };

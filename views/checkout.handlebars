@@ -1,33 +1,29 @@
-<div class="container jumbotron">
-    <h1>Complete the transaction with Stripe</h1>
+<div id="checkPage" class="container jumbotron">
 
-    <div>
-        {{#each shoppingBag}}
-        <div class="bag">
-            <ul>
-                <li>{{this.item}} {{this.price}}</li>
-            </ul>
-        </div>
-        {{/each}}
-        <div class="total">Total: $<span id="cart-total"></span> </div>
+  <h1 id="checkTitle">Review, then complete the transaction with Stripe!</h1>
 
+  <div>
+    {{!-- iterates through the shopping bag --}}
+    {{#each shoppingBag}}
+    <div class="bag">
+      <ul>
+        <li>{{this.item}} {{this.price}}</li>
+      </ul>
     </div>
+    {{/each}}
+    <div class="total">Total: $<span id="cart-total"></span> </div>
+
+  </div>
 
 
-
-<form action="/charge" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="{{stripePublishableKey}}"
-    data-amount="999"
-    data-name="Existent-Shell Designs"
-    data-description="Custom art"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-zip-code="true"
-    data-shipping-address="true"
-    data-locale="auto">
-  </script>
-</form>
+  {{!-- form that inserts stripe to process payments --}}
+  <form action="/charge" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{stripePublishableKey}}"
+      data-amount="9000" data-name="Existent-Shell Designs" data-description="Custom art"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-zip-code="true"
+      data-shipping-address="true" data-locale="auto">
+      </script>
+  </form>
 
 
 </div>

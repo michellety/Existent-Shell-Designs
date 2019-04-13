@@ -5,9 +5,11 @@
             <p>Unique art pieces</p>
         </div>
     </header>
-
+    {{!-- contact form  --}}
     <div id="cForm" class="contactForm">
         <form action="" name="contactForm">
+            <h5>Comments? Questions about a custom project? Let us know!</h5>
+            <br>
             <div class="form-group form-row">
                 <div class="col-md-6 mb-3">
                     <label for="validationServer01">First name</label>
@@ -37,7 +39,7 @@
         <div class="contact">
             <button id="contactInfo" class="btn">Contact Information</button>
         </div>
-
+        {{!-- begin grid for gallery designs --}}
         <div class="grid">
             {{#each items}}
             <div class="gallery-item" id="portfolio">
@@ -58,24 +60,24 @@
 
     </main>
 
+    {{!-- shopping bag with link to checkout page --}}
     <div id="check" class="checkout">
         <div class="shoppingCart">
             <div class="cartTitle">
-                <h3>Shopping Bag</h3>
+                <h4>Shopping Bag</h4>
             </div>
             <div class="cartItem">
                 <ul id="cart-list" class="list-group"></ul>
                 <hr>
                 <div class="total">Total: $<span id="cart-total"></span> </div>
             </div>
+            <br>
             <a id="checkoutBtn" class="btn btn-primary" href="/checkout" role="button">Checkout</a>
             <button id="clear" class="btn btn-default">Clear Shopping Bag</button>
         </div>
     </div>
     </form>
     </main>
-
-
 
     <div class="footer">Made by M</div>
 
