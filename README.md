@@ -1,4 +1,4 @@
-# project2
+# Existent-Shell Designs, Art Store
 Deployed using Heroku: https://sheltered-lake-59366.herokuapp.com/
 
 This is a store for artisan, custom art frames and paintings for sale. 
