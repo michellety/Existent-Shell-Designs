@@ -1,11 +1,12 @@
 .checkout {
     display: flex;
     flex-direction: column;
-    background:  rgba(255, 160, 122, 0.774);
+    background-color: rgba(123, 158, 182, 0.863);
 }
+
 .shoppingCart {
     width: 50%;
-    background: whitesmoke;
+    background-color: whitesmoke;
     align-self: center;
     margin: 1em;
     border-radius: 25px;
@@ -34,30 +35,28 @@
     margin-right: 50px;
 }
 
-
 /* contact form styling */
 
 .contactForm {
-  background-color: rgba(130, 183, 253, 0.795);
-  padding: 7em 4em;
-  border: 2px solid rgba(255, 160, 122, 0.692);
+    background-color: rgba(123, 158, 182, 0.863);
+    padding: 7em 4em;
 }
 
 .contact {
     width: 100%;
     display: inline-block;
-    background-color: rgba(130, 183, 253, 0.795);
-    border: 2px solid rgba(255, 160, 122, 0.692);
-    border-bottom: none;
+    background-color: rgba(123, 158, 182, 0.863);
 }
-
 
 /* checkout page styling */
 #checkPage {
     text-align: center;
     margin-top: 1em;
     font-size: larger;
+    background-color: rgba(123, 158, 182, 0.863);
+    min-height: 500px;
 }
+
 #checkTitle {
     font-size: 40px;
 }
